@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ Kingkale — SoftBoys Association</title>
+<meta name="description" content="DJ Kingkale — amapiano producer and DJ, SoftBoys Association. GIFTED. NJALO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #0E0D10;
+    --surface:   #17151A;
+    --surface-2: #1F1B21;
+    --gold:      #E3B23C;
+    --wine:      #7C1F3B;
+    --text:      #F3EFE7;
+    --muted:     #948F8A;
+    --line:      #2B2730;
+    --max: 1180px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(14,13,16,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .logo{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:22px;
+    letter-spacing:0.06em;
+  }
+  .logo span{ color:var(--gold); }
+  .nav-links{ display:flex; gap:36px; }
+  .nav-links a{
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--muted); font-weight:500;
+    transition:color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--text); }
+  .nav-links a:focus-visible{ outline:2px solid var(--gold); outline-offset:4px; }
+
+  .nav-cta{
+    font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
+    background:var(--gold); color:#141014; padding:10px 20px;
+    border-radius:2px; font-weight:600;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{ background:#f0c257; transform:translateY(-1px); }
+
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:120px; padding-bottom:80px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(124,31,59,0.35), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(227,178,60,0.10), transparent 60%);
+    pointer-events:none;
+  }
+
+  .hero-inner{ position:relative; z-index:2; }
+
+  .hero-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-weight:400;
+    line-height:0.86;
+    letter-spacing:0.01em;
+    font-size:clamp(64px, 15vw, 190px);
+    text-transform:uppercase;
+  }
+  .hero-title .line2{
+    color:var(--bg);
+    -webkit-text-stroke:1.5px var(--gold);
+    margin-left:clamp(20px, 8vw, 120px);
+    display:block;
+  }
+
+  .hero-sub{
+    margin-top:28px;
+    max-width:520px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  .hero-meta{
+    margin-top:44px;
+    display:flex; gap:48px; flex-wrap:wrap;
+  }
+  .hero-meta div{ }
+  .hero-meta .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:22px; color:var(--gold);
+  }
+  .hero-meta .lbl{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted);
+    margin-top:4px;
+  }
+
+  /* log-drum pulse bar — signature element */
+  .pulse{
+    margin-top:56px;
+    display:flex; align-items:flex-end; gap:5px;
+    height:44px;
+  }
+  .pulse span{
+    width:4px; background:var(--gold); border-radius:1px;
+    animation:pulse 1.4s ease-in-out infinite;
+    opacity:0.85;
+  }
+  .pulse span:nth-child(1){ height:30%; animation-delay:0s; }
+  .pulse span:nth-child(2){ height:70%; animation-delay:.12s; }
+  .pulse span:nth-child(3){ height:45%; animation-delay:.24s; }
+  .pulse span:nth-child(4){ height:100%; animation-delay:.36s; background:var(--wine); }
+  .pulse span:nth-child(5){ height:55%; animation-delay:.48s; }
+  .pulse span:nth-child(6){ height:80%; animation-delay:.6s; }
+  .pulse span:nth-child(7){ height:35%; animation-delay:.72s; }
+  .pulse span:nth-child(8){ height:65%; animation-delay:.84s; }
+  .pulse span:nth-child(9){ height:25%; animation-delay:.96s; }
+  .pulse span:nth-child(10){ height:90%; animation-delay:1.08s; background:var(--wine); }
+  .pulse span:nth-child(11){ height:40%; animation-delay:1.2s; }
+  .pulse span:nth-child(12){ height:60%; animation-delay:1.32s; }
+  @keyframes pulse{
+    0%, 100%{ transform:scaleY(0.4); opacity:.6; }
+    50%{ transform:scaleY(1); opacity:1; }
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--surface);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:16px 0;
+  }
+  .marquee-track{
+    display:inline-block;
+    animation:scroll 28s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:26px;
+    letter-spacing:0.04em;
+    color:var(--muted);
+    margin-right:40px;
+  }
+  .marquee-track span em{ color:var(--gold); font-style:normal; }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:120px 0; }
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:56px; flex-wrap:wrap; gap:16px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px;
+  }
+  .section-title{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:clamp(36px, 5vw, 56px);
+    letter-spacing:0.01em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-art{
+    aspect-ratio:4/5;
+    background:
+      linear-gradient(160deg, var(--surface-2), var(--surface));
+    border:1px solid var(--line);
+    border-radius:2px;
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-art::after{
+    content:"KINGKALE";
+    font-family:'Bebas Neue', sans-serif;
+    font-size:14vw;
+    color:rgba(227,178,60,0.06);
+    letter-spacing:0.05em;
+    white-space:nowrap;
+  }
+  .about-text p{
+    color:#CFC9C1; font-size:17px; line-height:1.85; margin-bottom:20px;
+  }
+  .about-text p strong{ color:var(--text); font-weight:600; }
+
+  .tag-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    padding:8px 14px; border:1px solid var(--line); border-radius:2px;
+    color:var(--muted);
+  }
+
+  /* ---------- RELEASES ---------- */
+  .release-list{ display:flex; flex-direction:column; }
+  .release{
+    display:grid;
+    grid-template-columns:64px 1fr auto auto;
+    align-items:center;
+    gap:28px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+    transition:padding-left .25s ease;
+  }
+  .release:hover{ padding-left:12px; }
+  .release .idx{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--muted); font-size:13px;
+  }
+  .release .cover{
+    width:64px; height:64px;
+    background:linear-gradient(135deg, var(--wine), var(--surface-2));
+    border-radius:2px; border:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .release-name{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:28px; letter-spacing:0.02em;
+  }
+  .release-name small{
+    display:block; font-family:'Space Grotesk', sans-serif;
+    font-size:13px; color:var(--muted); text-transform:none; letter-spacing:0; margin-top:4px;
+  }
+  .release-tag{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    color:var(--gold); text-transform:uppercase; letter-spacing:0.1em;
+    text-align:right; white-space:nowrap;
+  }
+  .release-link{
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--muted); border:1px solid var(--line);
+    padding:8px 16px; border-radius:2px; white-space:nowrap;
+    transition:all .2s ease;
+  }
+  .release-link:hover{ color:var(--text); border-color:var(--gold); }
+
+  .release-row{
+    display:grid;
+    grid-template-columns:64px 64px 1fr auto auto;
+    align-items:center;
+    gap:24px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* ---------- SHOWS ---------- */
+  .shows{ display:flex; flex-direction:column; }
+  .show{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    gap:24px; align-items:center;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .show .date{
+    font-family:'JetBrains Mono', monospace; color:var(--gold); font-size:13px;
+  }
+  .show .venue{ font-size:17px; font-weight:600; }
+  .show .city{ color:var(--muted); font-size:14px; margin-top:2px; }
+  .show .status{
+    font-family:'JetBrains Mono', monospace; font-size:11px;
+    text-transform:uppercase; letter-spacing:0.08em;
+    padding:7px 14px; border:1px solid var(--line); border-radius:2px;
+    color:var(--muted); white-space:nowrap;
+  }
+
+  /* ---------- BOOKING / CONTACT ---------- */
+  .booking{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:72px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .booking::before{
+    content:"";
+    position:absolute; top:-40%; right:-10%;
+    width:400px; height:400px; border-radius:50%;
+    background:radial-gradient(circle, rgba(124,31,59,0.4), transparent 70%);
+  }
+  .booking-inner{ position:relative; z-index:2; max-width:560px; }
+  .booking h2{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:clamp(32px,4.5vw,48px);
+    margin-bottom:20px; line-height:1.05;
+  }
+  .booking p{ color:var(--muted); font-size:16px; line-height:1.7; margin-bottom:32px; }
+  .btn-primary{
+    display:inline-block;
+    background:var(--gold); color:#141014;
+    font-weight:600; font-size:14px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:16px 32px; border-radius:2px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-primary:hover{ background:#f0c257; transform:translateY(-2px); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 40px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;
+  }
+  .footer-logo{
+    font-family:'Bebas Neue', sans-serif; font-size:28px;
+  }
+  .footer-logo span{ color:var(--gold); }
+  .social-links{ display:flex; gap:28px; }
+  .social-links a{
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    text-transform:uppercase; letter-spacing:0.08em; color:var(--muted);
+    transition:color .2s ease;
+  }
+  .social-links a:hover{ color:var(--gold); }
+  .footer-bottom{
+    margin-top:40px; padding-top:24px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:12px; font-family:'JetBrains Mono', monospace;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{ display:none; }
+    .about-grid{ grid-template-columns:1fr; }
+    .release-row{ grid-template-columns:40px 1fr; row-gap:12px; }
+    .release-row .cover{ display:none; }
+    .release-tag, .release-link{ grid-column:2; justify-self:start; }
+    .show{ grid-template-columns:1fr; row-gap:8px; }
+    .booking{ padding:48px 28px; }
+    .footer-grid{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">KING<span>KALE</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#releases">Releases</a>
+      <a href="#shows">Shows</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">SoftBoys Association — Amapiano / Hip-Hop</p>
+    <h1 class="hero-title">
+      DJ<br>
+      <span class="line2">KINGKALE</span>
+    </h1>
+    <p class="hero-sub">
+      Log drums, soul chords, and street-level truth. Producer and DJ out of South Africa,
+      building the SoftBoys Association sound one release at a time.
+    </p>
+
+    <div class="hero-meta">
+      <div>
+        <div class="num">02</div>
+        <div class="lbl">Releases Out</div>
+      </div>
+      <div>
+        <div class="num">ZA</div>
+        <div class="lbl">South Africa</div>
+      </div>
+      <div>
+        <div class="num">SBA</div>
+        <div class="lbl">SoftBoys Association</div>
+      </div>
+    </div>
+
+    <div class="pulse" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>GIFTED <em>·</em></span>
+    <span>NJALO <em>·</em></span>
+    <span>SOFTBOYS ASSOCIATION <em>·</em></span>
+    <span>GIFTED <em>·</em></span>
+    <span>NJALO <em>·</em></span>
+    <span>SOFTBOYS ASSOCIATION <em>·</em></span>
+    <span>GIFTED <em>·</em></span>
+    <span>NJALO <em>·</em></span>
+    <span>SOFTBOYS ASSOCIATION <em>·</em></span>
+    <span>GIFTED <em>·</em></span>
+    <span>NJALO <em>·</em></span>
+    <span>SOFTBOYS ASSOCIATION <em>·</em></span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-art"></div>
+    <div class="about-text">
+      <p class="eyebrow" style="margin-bottom:16px;">About</p>
+      <p>
+        <strong>DJ Kingkale</strong> makes amapiano and hip-hop built on the log drum,
+        soulful chord work, and lyrics that stay close to the ground — hardship, hustle,
+        and the climb out of it. Part of the <strong>SoftBoys Association</strong> collective.
+      </p>
+      <p>
+        The catalog so far moves between two poles: <strong>GIFTED</strong>, a record about
+        finding upliftment even in hard trading conditions, and <strong>NJALO</strong>,
+        a heartbreak-tinted amapiano cut carried by piano and space.
+      </p>
+      <p>
+        Replace this bio with your own words — this paragraph is a placeholder for your
+        real story, influences, and career highlights.
+      </p>
+      <div class="tag-row">
+        <span class="tag">Amapiano</span>
+        <span class="tag">Hip-Hop</span>
+        <span class="tag">Soulful</span>
+        <span class="tag">Maskandi-Influenced</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="releases" style="background:var(--surface);">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Releases</h2>
+      <p class="eyebrow">Latest work</p>
+    </div>
+
+    <div class="release-list">
+      <div class="release-row">
+        <div class="idx">01</div>
+        <div class="cover"></div>
+        <div class="release-name">GIFTED<small>Amapiano · Single</small></div>
+        <div class="release-tag">Out Now</div>
+        <a href="#" class="release-link">Add link →</a>
+      </div>
+      <div class="release-row">
+        <div class="idx">02</div>
+        <div class="cover"></div>
+        <div class="release-name">NJALO<small>Amapiano · Single</small></div>
+        <div class="release-tag">Out Now</div>
+        <a href="#" class="release-link">Add link →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shows">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Shows</h2>
+      <p class="eyebrow">Where to catch a set</p>
+    </div>
+
+    <div class="shows">
+      <div class="show">
+        <div class="date">TBA</div>
+        <div>
+          <div class="venue">Add your next venue</div>
+          <div class="city">City, Province</div>
+        </div>
+        <div class="status">Tickets soon</div>
+      </div>
+      <div class="show">
+        <div class="date">TBA</div>
+        <div>
+          <div class="venue">Add another show</div>
+          <div class="city">City, Province</div>
+        </div>
+        <div class="status">Tickets soon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="booking">
+      <div class="booking-inner">
+        <p class="eyebrow" style="margin-bottom:16px;">Get In Touch</p>
+        <h2>Book DJ Kingkale for your next event.</h2>
+        <p>
+          For bookings, collabs, or press — reach out directly. Swap this email
+          for your real contact address before publishing.
+        </p>
+        <a href="mailto:bookings@djkingkale.com" class="btn-primary">Email Bookings</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-logo">KING<span>KALE</span></div>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Spotify</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DJ Kingkale — SoftBoys Association</span>
+      <span>Built with Claude</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
